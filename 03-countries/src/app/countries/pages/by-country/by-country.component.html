@@ -1,0 +1,21 @@
+<!-- <h2>By Country</h2> -->
+
+<div class="row">
+  <div class="col">
+    <app-countries-input
+      placeholder="Enter the country name"
+      (onSubmit)="submit($event)"
+      (onDebounce)="getSuggestions($event)"
+    ></app-countries-input>
+  </div>
+</div>
+
+<div *ngIf="error" class="alert alert-danger">
+  Not results found with the term {{ term }}
+</div>
+
+<div *ngIf="countries.length > 0" class="row">
+  <div class="col">
+    <app-countries-table [countries]="countries"></app-countries-table>
+  </div>
+</div>

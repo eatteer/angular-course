@@ -1,0 +1,20 @@
+<div>
+  <h1>Heroes</h1>
+  <ul>
+    <li *ngFor="let hero of heroes">
+      <span>{{ hero }}</span>
+    </li>
+  </ul>
+</div>
+<button (click)="deleteRandomHero()">Delete random hero</button>
+<div *ngIf="deletedHeroes.length > 0; else noDeleted">
+  <h1>Deleted heroes</h1>
+  <ul>
+    <li *ngFor="let hero of deletedHeroes">
+      <span>{{ hero }}</span>
+    </li>
+  </ul>
+</div>
+<ng-template #noDeleted>
+  <h1>Heroes have not been deleted</h1>
+</ng-template>

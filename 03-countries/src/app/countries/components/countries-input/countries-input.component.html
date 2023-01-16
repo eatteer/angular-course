@@ -1,0 +1,11 @@
+<form (ngSubmit)="submit()" autocomplete="off">
+  <input
+    [(ngModel)]="term"
+    (input)="keyPressed()"
+    class="form-control mb-3"
+    type="text"
+    id="term"
+    name="term"
+    [placeholder]="placeholder"
+  />
+</form>
