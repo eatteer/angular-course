@@ -1,1 +1,16 @@
-<p>by-region works!</p>
+<div class="d-flex gap-2 mb-3 animate__animated animate__fadeIn">
+  <button
+    *ngFor="let region of regions"
+    (click)="setActiveRegion(region)"
+    class="btn"
+    [class]="styleButton(region)"
+  >
+    {{ region | titlecase }}
+  </button>
+</div>
+
+<div *ngIf="countries.length > 0" class="row">
+  <div class="col">
+    <app-countries-table [countries]="countries"></app-countries-table>
+  </div>
+</div>
