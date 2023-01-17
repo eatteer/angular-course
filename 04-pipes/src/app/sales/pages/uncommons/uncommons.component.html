@@ -1,0 +1,34 @@
+<div class="text-layout">
+  <h1>Uncommon pipes</h1>
+  <p>Built-in pipes (Included in CommonModule)</p>
+</div>
+
+<div class="grid">
+  <div class="col-12 md:col-6 lg:col-4">
+    F
+    <p-fieldset legend="i18nSelect" [toggleable]="true">
+      <p>
+        {{ genre | i18nSelect : welcomeMap }}, {{ name }}, es un placer
+        {{ genre | i18nSelect : invitationMap }} a nuestro nuevo lanzamiento.
+      </p>
+      <button pButton label="Change client" (click)="changeClient()"></button>
+    </p-fieldset>
+  </div>
+  <div class="col-12 md:col-6 lg:col-4">
+    <p-fieldset legend="i18nPlural" [toggleable]="true">
+      <p>
+        Hay {{ clients.length }} {{ clients.length | i18nPlural : queueMap }} en
+        la cola.
+      </p>
+      <button pButton label="Remove client" (click)="removeClient()"></button>
+    </p-fieldset>
+  </div>
+  <div class="col-12 md:col-6 lg:col-4">
+    <p-fieldset legend="Slice" [toggleable]="true">
+      <p>Original</p>
+      <pre>{{ clients }}</pre>
+      <p>clients | slice : 0</p>
+      <pre>{{ clients | slice : 0 }}</pre>
+    </p-fieldset>
+  </div>
+</div>

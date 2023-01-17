@@ -1,0 +1,31 @@
+<div class="text-layout">
+  <h1>Decimal, currency and percent pipe</h1>
+  <p>Built-in pipes (Included in CommonModule)</p>
+</div>
+
+<div class="grid">
+  <div class="col-12 md:col-6 lg:col-4">
+    <p-card header="Number">
+      <p>Original: {{ netSales }}</p>
+      <p>Number: {{ netSales + 1_000_000 | number : "1.2-2" }}</p>
+    </p-card>
+  </div>
+  <div class="col-12 md:col-6 lg:col-4">
+    <p-card header="Currency">
+      <p>Original: {{ netSales }}</p>
+      <p>
+        {{
+          netSales + 2_000_000 | currency : "CAD" : "symbol-narrow" : "1.0-4"
+        }}
+      </p>
+    </p-card>
+  </div>
+  <div class="col-12 md:col-6 lg:col-4">
+    <p-card header="Percent">
+      <p>Original: {{ netSales }}</p>
+      <p>
+        {{ percentGain | percent : "1.2-2" }}
+      </p>
+    </p-card>
+  </div>
+</div>
