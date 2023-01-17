@@ -1,6 +1,6 @@
 <!-- <h2>By Country</h2> -->
 
-<div class="row">
+<div class="row mb-3">
   <div class="col">
     <app-countries-input
       placeholder="Enter the country name"
@@ -8,6 +8,22 @@
       (onDebounce)="getSuggestions($event)"
     ></app-countries-input>
   </div>
+</div>
+
+<div
+  *ngIf="showSuggestions && term"
+  class="list-group mb-3 animate__animated animate__fadeIn"
+>
+  <button
+    *ngFor="let country of suggestions"
+    class="list-group-item list-group-item-action"
+    [routerLink]="['country', country.cca2]"
+  >
+    {{ country.name.common }}
+  </button>
+  <button (click)="submit(term)" class="list-group-item list-group-item-action">
+    Search "{{ term }}"
+  </button>
 </div>
 
 <div *ngIf="error" class="alert alert-danger">

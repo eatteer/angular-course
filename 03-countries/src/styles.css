@@ -1,3 +1,7 @@
 .small-flag {
   width: 32px;
 }
+
+body::-webkit-scrollbar {
+  display: none;
+}
