@@ -5,13 +5,13 @@
 
 <div class="grid">
   <div class="col-12 md:col-6 lg:col-4">
-    <p-card header="Number">
+    <p-card header="number">
       <p>Original: {{ netSales }}</p>
       <p>Number: {{ netSales + 1_000_000 | number : "1.2-2" }}</p>
     </p-card>
   </div>
   <div class="col-12 md:col-6 lg:col-4">
-    <p-card header="Currency">
+    <p-card header="currency">
       <p>Original: {{ netSales }}</p>
       <p>
         {{
@@ -21,7 +21,7 @@
     </p-card>
   </div>
   <div class="col-12 md:col-6 lg:col-4">
-    <p-card header="Percent">
+    <p-card header="percent">
       <p>Original: {{ netSales }}</p>
       <p>
         {{ percentGain | percent : "1.2-2" }}

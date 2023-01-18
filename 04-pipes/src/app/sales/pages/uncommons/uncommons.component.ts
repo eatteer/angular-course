@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable, interval } from 'rxjs';
 
 type Genre = 'male' | 'female';
 
@@ -25,6 +26,17 @@ export class UncommonsComponent {
     '=1': 'cliente',
     other: 'clientes',
   };
+
+  public literalObject = {
+    name: 'Juan',
+    age: 22,
+    address: 'Pereira, Risaralda, Colombia',
+  };
+
+  public intervalObservable: Observable<number> = interval(1000);
+  public timeoutPromise: Promise<string> = new Promise((resolve, reject) => {
+    setTimeout(() => resolve('Promise resolved'), 2000);
+  });
 
   public changeClient(): void {
     this.name = this.name == 'Juan' ? 'Mizuhara' : 'Juan';

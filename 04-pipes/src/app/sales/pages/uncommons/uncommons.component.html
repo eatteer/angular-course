@@ -5,7 +5,6 @@
 
 <div class="grid">
   <div class="col-12 md:col-6 lg:col-4">
-    F
     <p-fieldset legend="i18nSelect" [toggleable]="true">
       <p>
         {{ genre | i18nSelect : welcomeMap }}, {{ name }}, es un placer
@@ -24,11 +23,37 @@
     </p-fieldset>
   </div>
   <div class="col-12 md:col-6 lg:col-4">
-    <p-fieldset legend="Slice" [toggleable]="true">
+    <p-fieldset legend="slice" [toggleable]="true">
       <p>Original</p>
       <pre>{{ clients }}</pre>
       <p>clients | slice : 0</p>
       <pre>{{ clients | slice : 0 }}</pre>
+    </p-fieldset>
+  </div>
+  <div class="col-12 md:col-6 lg:col-4">
+    <p-fieldset legend="keyvalue" [toggleable]="true">
+      <ul>
+        <!-- Transform each key-value pair into an object -->
+        <li *ngFor="let item of literalObject | keyvalue">
+          {{ item.key | titlecase }}: {{ item.value }}
+        </li>
+      </ul>
+    </p-fieldset>
+  </div>
+  <div class="col-12 md:col-6 lg:col-4">
+    <p-fieldset legend="json" [toggleable]="true">
+      <pre>{{ literalObject | json }}</pre>
+    </p-fieldset>
+  </div>
+  <div class="col-12 md:col-6 lg:col-4">
+    <p-fieldset legend="async" [toggleable]="true">
+      <p>{{ intervalObservable | async }}</p>
+      <p>
+        <span *ngIf="!(timeoutPromise | async)">Loading...</span>
+        <span>
+          {{ timeoutPromise | async }}
+        </span>
+      </p>
     </p-fieldset>
   </div>
 </div>
