@@ -1,11 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HeroesService } from '../../services/heroes.service';
+import { Hero } from '../../interfaces/heroes.interfaces';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styles: [
-  ]
+  styles: [],
 })
-export class ListComponent {
+export class ListComponent implements OnInit {
+  public heroes: Hero[] = [];
 
+  public constructor(private heroesService: HeroesService) {}
+
+  public ngOnInit(): void {
+    this.heroesService
+      .getHeroes()
+      .subscribe((heroes) => (this.heroes = heroes));
+  }
 }

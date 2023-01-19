@@ -4,8 +4,15 @@ import { Component } from '@angular/core';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styles: [
-  ]
-})
-export class HomeComponent {
+    `
+      mat-sidenav {
+        width: 300px;
+      }
 
-}
+      .container-content {
+        margin: 2rem;
+      }
+    `,
+  ],
+})
+export class HomeComponent {}

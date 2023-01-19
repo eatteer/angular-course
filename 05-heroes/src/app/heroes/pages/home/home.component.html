@@ -1,2 +1,30 @@
-<p>home works!</p>
-<router-outlet></router-outlet>
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="push">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/heroes/list" (click)="sidenav.toggle()">
+        <mat-icon matListItemIcon>label</mat-icon>
+        <span>Heroes list</span>
+      </a>
+
+      <a mat-list-item routerLink="/heroes/add" (click)="sidenav.toggle()">
+        <mat-icon matListItemIcon>add</mat-icon>
+        <span>Add heroe</span>
+      </a>
+
+      <a mat-list-item routerLink="/heroes/search" (click)="sidenav.toggle()">
+        <mat-icon matListItemIcon>search</mat-icon>
+        <span>Search heroe</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-toolbar>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="spacer"></span>
+    <button mat-button>Logout</button>
+  </mat-toolbar>
+  <div class="container-content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>
