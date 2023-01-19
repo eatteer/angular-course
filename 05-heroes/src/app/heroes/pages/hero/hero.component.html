@@ -1,1 +1,13 @@
-<p>hero works!</p>
+<mat-spinner *ngIf="!hero"></mat-spinner>
+<div *ngIf="hero" class="max-w-5xl mx-auto md:flex gap-4">
+  <div class="md:w-4/12 mb-4 md:mb-0">
+    <img [src]="hero | image" [alt]="hero.superhero" class="w-full" />
+  </div>
+  <div class="md:w-8/12">
+    <h2>{{ hero.superhero }}</h2>
+    <p>(Publisher) {{ hero.publisher }}</p>
+    <p>(Alter ego) {{ hero.alter_ego }}</p>
+    <p>(First appearance ) {{ hero.first_appearance }}</p>
+    <p>(Characters) {{ hero.characters }}</p>
+  </div>
+</div>

@@ -1,1 +1,31 @@
-<p>search works!</p>
+<div class="max-w-5xl mx-auto">
+  <form>
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Search</mat-label>
+      <input
+        matInput
+        [matAutocomplete]="auto"
+        [(ngModel)]="query"
+        (input)="getSuggestions()"
+        type="text"
+        placeholder="Search a hero"
+        name="query"
+      />
+      <mat-autocomplete
+        #auto="matAutocomplete"
+        autoActiveFirstOption
+        (optionSelected)="onSelectedHero($event)"
+      >
+        <mat-option *ngFor="let hero of suggestedHeroes" [value]="hero">
+          {{ hero.superhero }}
+        </mat-option>
+        <mat-option *ngIf="query && suggestedHeroes.length === 0" disabled>
+          Not results found
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+  <div *ngIf="hero">
+    <pre>{{ hero | json }}</pre>
+  </div>
+</div>
