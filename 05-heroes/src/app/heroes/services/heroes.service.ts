@@ -27,4 +27,14 @@ export class HeroesService {
       .set('_limit', 6);
     return this.httpClient.get<Hero[]>(endpoint, { params });
   }
+
+  public create(hero: Hero): Observable<Hero> {
+    const endpoint: string = environment.apiUrl;
+    return this.httpClient.post<Hero>(endpoint, hero);
+  }
+
+  public update(hero: Hero): Observable<Hero> {
+    const endpoint: string = `${environment.apiUrl}/${hero.id}`;
+    return this.httpClient.put<Hero>(endpoint, hero);
+  }
 }

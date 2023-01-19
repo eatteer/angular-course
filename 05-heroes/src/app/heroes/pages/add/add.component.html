@@ -1,1 +1,64 @@
-<p>add works!</p>
+<div class="max-w-5xl mx-auto">
+  <form>
+    <h2>
+      {{ pageMode === "add" ? "Add a new hero" : "Edit " + hero.superhero }}
+    </h2>
+    <div>
+      <mat-form-field class="w-full">
+        <mat-label>Superhero name</mat-label>
+        <input
+          matInput
+          [(ngModel)]="hero.superhero"
+          type="text"
+          name="superhero"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field class="w-full">
+        <mat-label>Alter ego</mat-label>
+        <input
+          matInput
+          [(ngModel)]="hero.alter_ego"
+          type="text"
+          name="alter_ego"
+        />
+      </mat-form-field>
+      <mat-form-field class="w-full">
+        <mat-label>First apperance</mat-label>
+        <input
+          matInput
+          [(ngModel)]="hero.first_appearance"
+          type="text"
+          name="first_appearance"
+        />
+      </mat-form-field>
+      <mat-form-field class="w-full">
+        <mat-label>Characters</mat-label>
+        <input
+          matInput
+          [(ngModel)]="hero.characters"
+          type="text"
+          name="characters"
+        />
+      </mat-form-field>
+      <mat-form-field class="w-full">
+        <mat-label>Publisher</mat-label>
+        <mat-select
+          [(ngModel)]="hero.publisher"
+          [value]="hero.publisher"
+          name="publisher"
+        >
+          <mat-option *ngFor="let publisher of publishers" [value]="publisher">
+            {{ publisher }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="w-full">
+        <mat-label>Image URL</mat-label>
+        <input matInput [(ngModel)]="hero.alt_img" type="text" name="alt_img" />
+      </mat-form-field>
+    </div>
+    <img [src]="hero | image" alt="No image" class="mb-4 rounded" />
+    <button mat-raised-button (click)="save()" class="w-full">Save</button>
+  </form>
+</div>
