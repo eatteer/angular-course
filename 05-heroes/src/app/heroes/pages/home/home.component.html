@@ -22,7 +22,10 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span class="spacer"></span>
-    <button mat-button>Logout</button>
+    <div class="flex gap-4">
+      <span>{{ user.user }}</span>
+      <button mat-button (click)="logout()">Logout</button>
+    </div>
   </mat-toolbar>
   <div class="container-content">
     <router-outlet></router-outlet>

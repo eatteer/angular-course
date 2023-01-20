@@ -1,9 +1,12 @@
-<div class="max-w-5xl mx-auto">
-  <form>
-    <h2>
-      {{ pageMode === "add" ? "Add a new hero" : "Edit " + hero.superhero }}
+<div class="max-w-3xl mx-auto">
+  <form class="grid-layout">
+    <!-- Form title | Start -->
+    <h2 id="form-title">
+      {{ mode === "add" ? "Add a new hero" : "Edit " + hero.superhero }}
     </h2>
-    <div>
+    <!-- Form title | End -->
+    <!-- Input | Start -->
+    <div id="inputs">
       <mat-form-field class="w-full">
         <mat-label>Superhero name</mat-label>
         <input
@@ -53,12 +56,48 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field class="w-full">
+      <mat-form-field class="w-full mb-4 md:mb-0" subscriptSizing="dynamic">
         <mat-label>Image URL</mat-label>
-        <input matInput [(ngModel)]="hero.alt_img" type="text" name="alt_img" />
+        <input
+          matInput
+          [(ngModel)]="hero.alt_img"
+          type="text"
+          name="alt_img"
+          required
+        />
       </mat-form-field>
     </div>
-    <img [src]="hero | image" alt="No image" class="mb-4 rounded" />
-    <button mat-raised-button (click)="save()" class="w-full">Save</button>
+    <!-- Input | End -->
+    <!-- Image | Start -->
+    <img
+      id="hero-image"
+      [src]="hero | image"
+      alt="No image"
+      class="w-full mb-4 rounded"
+    />
+    <!-- Image | End -->
+    <!-- Buttons | Start -->
+    <div id="buttons" class="flex gap-2">
+      <button
+        type="button"
+        mat-stroked-button
+        (click)="save()"
+        class="w-full"
+        color="accent"
+      >
+        Save
+      </button>
+      <button
+        type="button"
+        *ngIf="mode === 'edit'"
+        mat-stroked-button
+        (click)="delete()"
+        class="w-full"
+        color="warn"
+      >
+        Delete
+      </button>
+    </div>
+    <!-- Buttons | End -->
   </form>
 </div>

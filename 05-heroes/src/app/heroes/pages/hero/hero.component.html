@@ -1,7 +1,7 @@
 <div class="w-full flex justify-center">
   <mat-spinner *ngIf="!hero"></mat-spinner>
 </div>
-<div *ngIf="hero" class="max-w-5xl mx-auto md:flex gap-4">
+<div *ngIf="hero" class="max-w-3xl mx-auto md:flex gap-4">
   <div class="md:w-4/12 mb-4 md:mb-0">
     <img [src]="hero | image" [alt]="hero.superhero" class="w-full" />
   </div>

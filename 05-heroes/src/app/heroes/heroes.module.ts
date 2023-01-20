@@ -10,6 +10,7 @@ import { ListComponent } from './pages/list/list.component';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
 import { ImagePipe } from './pipes/image.pipe';
 import { FormsModule } from '@angular/forms';
+import { ConfirmDeletionComponent } from './components/confirm-deletion/confirm-deletion.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     SearchComponent,
     HeroCardComponent,
     ImagePipe,
+    ConfirmDeletionComponent,
   ],
   imports: [
     CommonModule,
