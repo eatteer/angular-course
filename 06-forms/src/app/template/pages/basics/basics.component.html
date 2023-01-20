@@ -1,0 +1,60 @@
+<h2>Basics</h2>
+<form #basicForm="ngForm" (ngSubmit)="submit()" autocomplete="off">
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <div class="mb-2">
+        <label class="form-label" for="product">Product</label>
+        <input
+          [ngModel]="initialValues.product"
+          id="product"
+          class="form-control"
+          type="text"
+          name="product"
+          required
+        />
+        <small *ngIf="isInvalid('product')" class="text-danger">
+          Invalid field (IDK Why)
+        </small>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6">
+      <div class="mb-2">
+        <label class="form-label" for="price">Price</label>
+        <input
+          [ngModel]="initialValues.price"
+          id="price"
+          class="form-control"
+          type="number"
+          name="price"
+          required
+          min="0"
+        />
+        <small *ngIf="isInvalid('price')" class="text-danger">
+          Invalid field (IDK Why)
+        </small>
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="stock">Stock</label>
+    <input
+      [ngModel]="initialValues.stock"
+      id="stock"
+      class="form-control"
+      type="number"
+      name="stock"
+      required
+      min="0"
+    />
+    <small *ngIf="isInvalid('stock')" class="text-danger">
+      Invalid field (IDK Why)
+    </small>
+  </div>
+  <button class="btn btn-primary" [disabled]="basicForm.invalid">Submit</button>
+</form>
+<div class="mt-4">
+  <p><small>(Pristine)</small> {{ basicForm.pristine }}</p>
+  <p><small>(Touched) </small>{{ basicForm.touched }}</p>
+  <p><small>(Valid)</small> {{ basicForm.valid }}</p>
+  <pre>{{ basicForm.form.value | json }}</pre>
+</div>
