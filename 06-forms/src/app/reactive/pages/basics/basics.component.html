@@ -1,1 +1,68 @@
-<p>basics works!</p>
+<h2>Basics</h2>
+<form [formGroup]="form" (ngSubmit)="submit()" autocomplete="off">
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <div class="mb-2">
+        <label class="form-label" for="product">Product</label>
+        <input
+          id="product"
+          formControlName="product"
+          class="form-control"
+          type="text"
+        />
+        <small
+          *ngIf="isControlInvalid('product', 'required')"
+          class="text-danger"
+        >
+          Product is required
+        </small>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6">
+      <div class="mb-2">
+        <label class="form-label" for="price">Price</label>
+        <input
+          id="price"
+          formControlName="price"
+          class="form-control"
+          type="number"
+        />
+        <small
+          *ngIf="isControlInvalid('price', 'required')"
+          class="text-danger"
+        >
+          Price is required
+        </small>
+        <small *ngIf="isControlInvalid('price', 'min')" class="text-danger">
+          Minimun price must be 1
+        </small>
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="stock">Stock</label>
+    <input
+      id="stock"
+      formControlName="stock"
+      class="form-control"
+      type="number"
+    />
+    <small *ngIf="isControlInvalid('stock', 'required')" class="text-danger">
+      Stock is required
+    </small>
+    <small *ngIf="isControlInvalid('stock', 'min')" class="text-danger">
+      Minimun stock must be 1
+    </small>
+  </div>
+  <small class="d-block mb-3">
+    When try to submit, if form is invalid, touch all the controls to show the
+    errors.
+  </small>
+  <button class="btn btn-primary">Submit</button>
+</form>
+<div class="mt-4">
+  <p><small>(Pristine)</small> {{ form.pristine }}</p>
+  <p><small>(Touched) </small>{{ form.touched }}</p>
+  <p><small>(Valid)</small> {{ form.valid }}</p>
+  <pre>{{ form.value | json }}</pre>
+</div>

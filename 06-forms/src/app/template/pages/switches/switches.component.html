@@ -1,1 +1,79 @@
-<p>switches works!</p>
+<h2>Switches</h2>
+<form #switchForm="ngForm">
+  <!-- Genre | Start -->
+  <div class="mb-3">
+    <label class="form-label">Genre</label>
+    <div class="form-check">
+      <input
+        [(ngModel)]="person.genre"
+        id="male"
+        class="form-check-input"
+        type="radio"
+        name="genre"
+        value="male"
+        required
+      />
+      <label class="form-check-label" for="male">Male</label>
+    </div>
+    <div class="form-check">
+      <input
+        [(ngModel)]="person.genre"
+        id="female"
+        class="form-check-input"
+        type="radio"
+        name="genre"
+        value="female"
+        required
+      />
+      <label class="form-check-label" for="female">Female</label>
+    </div>
+  </div>
+  <!-- Genre | End -->
+  <!-- Notifications | Start -->
+  <div class="mb-3">
+    <label class="form-label">Notifications</label>
+    <div class="form-check form-switch">
+      <input
+        [(ngModel)]="person.notificacions"
+        id="notification"
+        class="form-check-input"
+        type="checkbox"
+        name="notifications"
+      />
+      <label class="form-check-label" for="notification">
+        I want to receive notifications
+      </label>
+    </div>
+  </div>
+  <!-- Notifications | End -->
+  <!-- Terms and conditions | Start -->
+  <div class="mb-3">
+    <label class="form-label">Terms and conditions</label>
+    <div class="form-check">
+      <input
+        [(ngModel)]="person.terms"
+        id="terms"
+        class="form-check-input"
+        type="checkbox"
+        name="terms"
+      />
+      <label class="form-check-label" for="terms">
+        Accept terms and conditions
+      </label>
+    </div>
+  </div>
+  <!-- Terms and conditions | End -->
+  <button class="btn btn-primary" [disabled]="switchForm.invalid">
+    Submit
+  </button>
+</form>
+<div class="mt-4">
+  <div>
+    <span>Person</span>
+    <pre>{{ person | json }}</pre>
+  </div>
+  <div>
+    <span>Form value</span>
+    <pre>{{ switchForm.form.value | json }}</pre>
+  </div>
+</div>

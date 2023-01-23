@@ -1,1 +1,64 @@
-<p>dynamics works!</p>
+<h2>Dynamics</h2>
+<form [formGroup]="form" autocomplete="off">
+  <!-- Name | Start -->
+  <div class="mb-3">
+    <label class="form-label" for="name">Name</label>
+    <input id="name" formControlName="name" class="form-control" type="text" />
+    <div class="text-danger">
+      <small *ngIf="isControlInvalid('name', 'required')">
+        Name is required
+      </small>
+      <small *ngIf="isControlInvalid('name', 'minlength')">
+        Name minimum length must be 3
+      </small>
+    </div>
+  </div>
+  <!-- Name | End -->
+  <!-- Favorite game | Start -->
+  <div class="mb-3">
+    <label class="form-label" for="favoriteGame">Favorite game</label>
+    <div class="input-group">
+      <input class="form-control" type="text" />
+      <button class="btn btn-outline-secondary" type="button">A</button>
+    </div>
+  </div>
+  <!-- Favorite game | End -->
+  <!-- Favorite games | Start -->
+  <div class="mb-3">
+    <label class="form-label" for="favoriteGames">Favorite games</label>
+    <!-- Inputs here -->
+    <!-- <div
+      *ngFor="let favoriteGame of person.favoriteGames; let index = index"
+      class="input-group mb-3"
+    >
+      <input
+        class="form-control"
+        [(ngModel)]="favoriteGame.name"
+        type="text"
+        name="favoriteGame{{ index }}"
+        required
+      />
+      <button
+        class="btn btn-outline-danger"
+        type="button"
+        (click)="deleteFavoriteGame(index)"
+      >
+        D
+      </button>
+    </div> -->
+  </div>
+  <!-- Favorite games | End -->
+  <!-- Buttons | Start -->
+  <div class="d-flex gap-2">
+    <button (click)="submit()" type="submit" class="btn btn-primary">
+      Submit
+    </button>
+    <button (click)="logForm()" type="button" class="btn btn-primary">
+      Log form
+    </button>
+  </div>
+  <!-- Buttons | End -->
+</form>
+<!-- <div class="mt-4">
+  <pre>{{ person | json }}</pre>
+</div> -->

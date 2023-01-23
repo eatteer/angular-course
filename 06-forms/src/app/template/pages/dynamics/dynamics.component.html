@@ -1,8 +1,78 @@
 <h2>Dynamics</h2>
-<form #dynamicForm="ngForm" (ngSubmit)="submit()" autocomplete="off">
+<form
+  #dynamicForm="ngForm"
+  (ngSubmit)="submit()"
+  (keydown.enter)="$event.preventDefault()"
+  autocomplete="off"
+>
+  <!-- Name | Start -->
   <div class="mb-3">
     <label class="form-label" for="name">Name</label>
-    <input ngModel id="name" class="form-control" type="text" name="name" />
+    <input
+      [ngModel]="person.name"
+      id="name"
+      class="form-control"
+      type="text"
+      name="name"
+      required
+    />
+    <small *ngIf="isNameInvalid()" class="text-danger">Name is required</small>
   </div>
-  <button class="btn btn-primary">Submit</button>
+  <!-- Name | End -->
+  <!-- Favorite game | Start -->
+  <div class="mb-3">
+    <label class="form-label" for="favoriteGame">Favorite game</label>
+    <div class="input-group">
+      <input
+        ngModel
+        class="form-control"
+        type="text"
+        name="favoriteGame"
+        (keyup.enter)="addFavoriteGame()"
+      />
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="addFavoriteGame()"
+      >
+        A
+      </button>
+    </div>
+  </div>
+  <!-- Favorite game | End -->
+  <!-- Favorite games | Start -->
+  <div class="mb-3">
+    <label class="form-label" for="favoriteGames">Favorite games</label>
+    <!-- Inputs here -->
+    <div
+      *ngFor="let favoriteGame of person.favoriteGames; let index = index"
+      class="input-group mb-3"
+    >
+      <input
+        class="form-control"
+        [(ngModel)]="favoriteGame.name"
+        type="text"
+        name="favoriteGame{{ index }}"
+        required
+      />
+      <button
+        class="btn btn-outline-danger"
+        type="button"
+        (click)="deleteFavoriteGame(index)"
+      >
+        D
+      </button>
+    </div>
+  </div>
+  <!-- Favorite games | End -->
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="dynamicForm.invalid"
+  >
+    Submit
+  </button>
 </form>
+<div class="mt-4">
+  <pre>{{ person | json }}</pre>
+</div>
