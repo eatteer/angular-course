@@ -1,5 +1,9 @@
 <h2>Dynamics</h2>
-<form [formGroup]="form" autocomplete="off">
+<form
+  [formGroup]="form"
+  autocomplete="off"
+  (keydown.enter)="$event.preventDefault()"
+>
   <!-- Name | Start -->
   <div class="mb-3">
     <label class="form-label" for="name">Name</label>
@@ -18,34 +22,42 @@
   <div class="mb-3">
     <label class="form-label" for="favoriteGame">Favorite game</label>
     <div class="input-group">
-      <input class="form-control" type="text" />
-      <button class="btn btn-outline-secondary" type="button">A</button>
+      <input
+        formControlName="favoriteGame"
+        class="form-control"
+        type="text"
+        (keydown.enter)="addFavoriteGame()"
+      />
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="addFavoriteGame()"
+      >
+        A
+      </button>
     </div>
   </div>
   <!-- Favorite game | End -->
   <!-- Favorite games | Start -->
-  <div class="mb-3">
+  <div class="mb-3" formArrayName="favoriteGames">
     <label class="form-label" for="favoriteGames">Favorite games</label>
     <!-- Inputs here -->
-    <!-- <div
-      *ngFor="let favoriteGame of person.favoriteGames; let index = index"
-      class="input-group mb-3"
+    <div
+      *ngFor="let favoriteGame of favoriteGames.controls; let index = index"
+      class="mb-3"
     >
-      <input
-        class="form-control"
-        [(ngModel)]="favoriteGame.name"
-        type="text"
-        name="favoriteGame{{ index }}"
-        required
-      />
-      <button
-        class="btn btn-outline-danger"
-        type="button"
-        (click)="deleteFavoriteGame(index)"
-      >
-        D
-      </button>
-    </div> -->
+      <div class="input-group">
+        <input [formControlName]="index" class="form-control" type="text" />
+        <button
+          class="btn btn-outline-danger"
+          type="button"
+          (click)="removeFavoriteGame(index)"
+        >
+          D
+        </button>
+      </div>
+      <small> Name is required </small>
+    </div>
   </div>
   <!-- Favorite games | End -->
   <!-- Buttons | Start -->
@@ -59,6 +71,9 @@
   </div>
   <!-- Buttons | End -->
 </form>
-<!-- <div class="mt-4">
-  <pre>{{ person | json }}</pre>
-</div> -->
+<div class="mt-4">
+  <p><small>(Pristine)</small> {{ form.pristine }}</p>
+  <p><small>(Touched) </small>{{ form.touched }}</p>
+  <p><small>(Valid)</small> {{ form.valid }}</p>
+  <pre>{{ form.value | json }}</pre>
+</div>
