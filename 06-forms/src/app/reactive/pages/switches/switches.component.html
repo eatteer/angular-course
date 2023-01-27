@@ -56,6 +56,23 @@
       </label>
     </div>
   </div>
+  <!-- Favorite vehicles | Start -->
+  <div class="mb-3">
+    <label class="form-label">Favorite vehicles</label>
+    <div *ngFor="let vehicle of favoriteVehicles" class="form-check">
+      <input
+        [id]="vehicle.id"
+        class="form-check-input"
+        type="checkbox"
+        [value]="vehicle.id"
+        (change)="onChangeCheckbox($event)"
+      />
+      <label class="form-check-label" [for]="vehicle.id">
+        {{ vehicle.name }}
+      </label>
+    </div>
+  </div>
+  <!-- Favorite vehicles | End -->
   <!-- Terms and conditions | End -->
   <button class="btn btn-primary">Submit</button>
 </form>
