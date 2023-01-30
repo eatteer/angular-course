@@ -1,0 +1,103 @@
+<h2>Reactive validations</h2>
+<div class="row">
+  <div class="col">
+    <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="off">
+      <!-- Name | Start -->
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input
+          id="name"
+          formControlName="name"
+          type="text"
+          placeholder="Name"
+          class="form-control"
+        />
+        <small class="text-danger">
+          {{ nameErrorMessage }}
+        </small>
+      </div>
+      <!-- Name | End -->
+      <!-- Email | Start -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input
+          id="email"
+          formControlName="email"
+          type="email"
+          placeholder="Email"
+          class="form-control"
+        />
+        <small class="text-danger">
+          {{ emailErrorMessage }}
+        </small>
+      </div>
+      <!-- Email | End -->
+      <!-- Username | Start -->
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input
+          id="username"
+          formControlName="username"
+          type="text"
+          placeholder="Username"
+          class="form-control"
+        />
+        <small class="text-danger">
+          {{ usernameErrorMessage }}
+        </small>
+      </div>
+      <!-- Username | End -->
+      <!-- Password | Start -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          id="password"
+          formControlName="password"
+          type="password"
+          placeholder="Password"
+          class="form-control"
+        />
+        <small class="text-danger">
+          {{ passwordErrorMessage }}
+        </small>
+      </div>
+      <!-- Password | End -->
+      <!-- Confirm password | Start -->
+      <div class="mb-3">
+        <label for="confirmPassword" class="form-label">Confirm password</label>
+        <input
+          id="confirmPassword"
+          formControlName="confirmPassword"
+          type="password"
+          placeholder="Confirm password"
+          class="form-control"
+        />
+        <small class="text-danger">
+          {{ confirmPasswordErrorMessage }}
+        </small>
+      </div>
+      <!-- Confirm password | End -->
+      <button class="btn btn-primary" [disabled]="form.pending">Submit</button>
+    </form>
+  </div>
+</div>
+<div class="mt-4">
+  <p><small>(Pristine)</small> {{ form.pristine }}</p>
+  <p><small>(Touched) </small>{{ form.touched }}</p>
+  <p><small>(Valid)</small> {{ form.valid }}</p>
+  <p><small>(Status)</small> {{ form.status }}</p>
+  <pre>{{ form.value | json }}</pre>
+  <!-- <h3>Form errors</h3>
+  <pre>{{ form.errors | json }}</pre>
+  <h3>Control errors</h3>
+  <span>Name</span>
+  <pre>{{ printError("name") | json }}</pre>
+  <span>Email</span>
+  <pre>{{ printError("email") | json }}</pre>
+  <span>Username</span>
+  <pre>{{ printError("username") | json }}</pre>
+  <span>Password</span>
+  <pre>{{ printError("password") | json }}</pre>
+  <span>Confirm password</span>
+  <pre>{{ printError("confirmPassword") | json }}</pre> -->
+</div>

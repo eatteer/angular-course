@@ -18,4 +18,9 @@ export class SideMenuComponent {
     { label: 'Dynamics', path: '/reactive/dynamics' },
     { label: 'Switches', path: '/reactive/switches' },
   ];
+
+  public validationRoutes: SideMenuItem[] = [
+    { label: 'Login', path: '/auth/login' },
+    { label: 'Register', path: '/auth/register' },
+  ];
 }
