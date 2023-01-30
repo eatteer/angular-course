@@ -1,0 +1,35 @@
+<h1>Nested selectors</h1>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div class="mb-3">
+    <label for="region" class="form-label">Region</label>
+    <select id="region" formControlName="region" class="form-select">
+      <option value="" selected>Select a region</option>
+      <option *ngFor="let region of regions" [value]="region">
+        {{ region | titlecase }}
+      </option>
+    </select>
+  </div>
+  <div *ngIf="countries.length > 0" class="mb-3">
+    <label for="country" class="form-label">Country</label>
+    <select id="country" formControlName="country" class="form-select">
+      <option value="" selected>Select a country</option>
+      <option *ngFor="let country of countries" [value]="country.cca2">
+        {{ country.name.common | titlecase }}
+      </option>
+    </select>
+  </div>
+  <div *ngIf="borders.length > 0" class="mb-3">
+    <label for="border" class="form-label">Border</label>
+    <select id="border" formControlName="border" class="form-select">
+      <option value="" selected>Select a border</option>
+      <option *ngFor="let border of borders" [value]="border.cca2">
+        {{ border.name.common | titlecase }}
+      </option>
+    </select>
+  </div>
+  <button class="btn btn-primary">Submit</button>
+</form>
+<div class="mt-4">
+  <small>(Valid) {{ form.valid }}</small>
+  <pre>{{ form.value | json }}</pre>
+</div>
