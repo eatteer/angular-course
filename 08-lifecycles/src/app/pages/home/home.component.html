@@ -1,0 +1,13 @@
+<div class="container">
+  <p>(Name) {{ name }}</p>
+  <input [(ngModel)]="name" type="text" />
+  <button (click)="click()">Click</button>
+  <br />
+  <app-show-name [name]="name"></app-show-name>
+</div>
+<div class="container">
+  <h2>Interval
+
+  </h2>
+  <p>(Seconds): {{ seconds }}</p>
+</div>
