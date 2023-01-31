@@ -31,7 +31,10 @@ export class SelectorComponent implements OnInit {
     this.controls.region.valueChanges
       .pipe(
         switchMap((region) => this.countriesService.getCountries(region)),
-        tap(() => this.controls.country.reset(undefined, { emitEvent: false }))
+        tap(() => {
+          this.controls.country.reset(undefined, { emitEvent: false });
+          this.controls.border.reset(undefined, { emitEvent: false });
+        })
       )
       .subscribe((countries) => (this.countries = countries));
 
