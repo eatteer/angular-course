@@ -8,9 +8,11 @@ import { MarkersComponent } from './pages/markers/markers.component';
 import { ZoomComponent } from './pages/zoom/zoom.component';
 import { PropertiesComponent } from './pages/properties/properties.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MenuComponent } from '../shared/menu/menu.component';
 
 @NgModule({
   declarations: [
+    MenuComponent,
     SmallMapComponent,
     FullscreenComponent,
     MarkersComponent,

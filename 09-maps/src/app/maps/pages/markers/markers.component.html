@@ -1,10 +1,21 @@
+<app-menu></app-menu>
 <div #map class="w-100 h-100"></div>
 <div class="marks-menu list-group">
   <button
     (click)="addMarker()"
     class="d-flex align-items-center gap-2 list-group-item list-group-item-action fw-semibold"
   >
-    <i class="fa-solid fa-plus"></i>
+    <i class="icon fa-solid fa-plus"></i>
     <span>Add marker</span>
+  </button>
+  <button
+    *ngFor="let marker of markers; let index = index"
+    (click)="flyToMarker(marker.mapboxMarker)"
+    (dblclick)="removeMarker(index)"
+    [style.backgroundColor]="marker.color"
+    class="d-flex align-items-center gap-2 list-group-item list-group-item-action fw-semibold"
+  >
+    <i class="icon fa-location-dot fa-solid"></i>
+    <span>Marker {{ index + 1 }}</span>
   </button>
 </div>
