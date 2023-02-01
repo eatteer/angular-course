@@ -1,29 +1,21 @@
 <div #map class="w-100 h-100"></div>
-<div id="zoom-range" class="card">
+<div class="zoom-range card">
   <div class="card-body">
-    <div class="row">
-      <div class="col-12">
-        <p class="text-center">
-          <span class="fw-bold">ZOOM</span>
-          {{ zoomControl.value | number : "2.2-2" }}
-          <span class="fw-bold">LNG</span> 9 <span class="fw-bold">LAT</span> 9
-        </p>
-        <input
-          type="range"
-          class="form-range"
-          [formControl]="zoomControl"
-          [min]="minZoom"
-          [max]="maxZoom"
-        />
-      </div>
-      <div class="col-12 mt-2">
-        <button class="btn btn-primary" (click)="zoomOut()">
-          <i class="fa-solid fa-magnifying-glass-minus"></i>
-        </button>
-        <button class="btn btn-primary float-end" (click)="zoomIn()">
-          <i class="fa-solid fa-magnifying-glass-plus"></i>
-        </button>
-      </div>
-    </div>
+    <p class="text-center">
+      <span class="fw-bold">ZOOM</span>
+      {{ zoomControl.value | number : "2.4-4" }} |
+      <span class="fw-bold">LNG</span>
+      {{ coordinates.lng | number : "2.4-4" }} |
+      <span class="fw-bold">LAT</span>
+      {{ coordinates.lat | number : "2.4-4" }}
+    </p>
+    <input
+      type="range"
+      class="w-100"
+      [formControl]="zoomControl"
+      [min]="zoom.min"
+      [max]="zoom.max"
+      step="00.000000000000001"
+    />
   </div>
 </div>
