@@ -1,0 +1,64 @@
+<div class="max-w-lg mx-auto my-8">
+  <div class="card shadow-xl">
+    <div class="card-body">
+      <h2 class="text-4xl font-bold mb-4">Add product</h2>
+      <form [formGroup]="form">
+        <div class="form-control">
+          <label for="name" class="label">
+            <span class="label-text">Name</span>
+          </label>
+          <input
+            id="name"
+            type="text"
+            formControlName="name"
+            class="input input-bordered"
+          />
+          <label class="label">
+            <span
+              *appCustomIf="form.invalid"
+              appMessageError
+              [errorMessage]="errorMessage"
+              [errorMessageColor]="errorMessageColor"
+              class="label-text-alt"
+            ></span>
+          </label>
+        </div>
+        <div>
+          <p>
+            <span class="font-bold">Current error message:</span>
+            <span> {{ errorMessage }}</span>
+          </p>
+          <p>
+            <span class="font-bold">Current error message color:</span>
+            <span> {{ errorMessageColor }}</span>
+          </p>
+        </div>
+        <div class="flex justify-between mt-4">
+          <button class="btn btn-sm btn-neutral" [disabled]="form.invalid">
+            Submit
+          </button>
+          <div class="flex flex-col gap-2">
+            <button
+              class="btn btn-sm btn-warning"
+              (click)="changeErrorMessage()"
+            >
+              Change error message
+            </button>
+            <button
+              class="btn btn-sm btn-warning"
+              (click)="changeErrorMessageColor()"
+            >
+              Change error message color
+            </button>
+          </div>
+        </div>
+      </form>
+      <!-- <div class="alert mt-4">
+        <div class="flex flex-col items-start gap-0">
+          <span>{{ form.valid | json }}</span>
+          <span>{{ form.value | json }}</span>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
