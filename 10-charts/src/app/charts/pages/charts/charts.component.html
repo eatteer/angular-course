@@ -1,0 +1,13 @@
+<div class="tabs">
+  <a
+    *ngFor="let route of routes"
+    class="tab tab-bordered"
+    [routerLink]="route.path"
+    routerLinkActive="tab-active"
+  >
+    {{ route.label }}
+  </a>
+</div>
+<div class="mt-4">
+  <router-outlet></router-outlet>
+</div>

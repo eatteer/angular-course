@@ -1,0 +1,6 @@
+<div *ngIf="!data" class="alert alert-info text-white font-bold w-max">
+  Loading...
+</div>
+<div *ngIf="data" class="w-4/12">
+  <canvas baseChart [type]="type" [data]="data"> </canvas>
+</div>

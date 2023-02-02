@@ -1,0 +1,27 @@
+<div class="drawer">
+  <input #drawerChecker id="drawer" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content">
+    <!-- Page content -->
+    <div class="container mx-auto my-8">
+      <label for="drawer" class="btn btn-primary mb-4"> Open drawer </label>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="drawer-side">
+    <label for="drawer" class="drawer-overlay"></label>
+    <ul
+      class="menu space-y-1 w-80 p-4 bg-base-100 text-base-content rounded-tr-2xl rounded-br-2xl"
+    >
+      <!-- Sidebar content -->
+      <li *ngFor="let route of routes">
+        <a
+          [routerLink]="route.path"
+          routerLinkActive="active"
+          (click)="drawerChecker.checked = !drawerChecker.checked"
+        >
+          {{ route.label }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
