@@ -2,6 +2,7 @@ const { Router } = require("express");
 
 const authMiddlewares = require("../middlewares/auth");
 const authController = require("../controllers/auth");
+const jwtMiddlewares = require("../middlewares/jwt");
 
 const router = Router();
 
@@ -17,6 +18,6 @@ router.post(
   authController.login
 );
 
-router.get("/renew", authController.renew);
+router.get("/renew", jwtMiddlewares.validateJwt, authController.renew);
 
 module.exports = router;
