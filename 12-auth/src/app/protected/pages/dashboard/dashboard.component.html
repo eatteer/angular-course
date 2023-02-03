@@ -1,0 +1,7 @@
+<div class="container">
+  <h1>Dashboard</h1>
+  <p>This pages only works if you're authenticated</p>
+  <pre *ngIf="user">{{ user | json }}</pre>
+  <h3 *ngIf="!user">There is not user, so... You should not be here</h3>
+  <button (click)="logout()">Logout</button>
+</div>
