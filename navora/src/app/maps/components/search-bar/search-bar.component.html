@@ -1,0 +1,10 @@
+<div class="fixed top-4 left-4 w-80">
+  <input
+    #input
+    (keyup)="onKeyUp(input.value)"
+    type="text"
+    placeholder="Search a place..."
+    class="input input-bordered w-full mb-1"
+  />
+  <app-search-results></app-search-results>
+</div>
