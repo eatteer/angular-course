@@ -1,4 +1,4 @@
-export interface PlacesResponse {
+export interface GeocodingResponse {
   type: string;
   query: string[];
   features: Feature[];

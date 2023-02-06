@@ -1,34 +1,21 @@
 import { Injectable } from '@angular/core';
-import { LngLatBounds, LngLatLike, Map, Marker } from 'mapbox-gl';
-import { Observable } from 'rxjs';
-import { DirectionsApiClient } from '../apis/directions-api.client';
-import { DirectionsResponse } from '../interfaces/directions.interfaces';
-import { Feature } from '../interfaces/places.interfaces';
+import { LngLatBounds, Map, Marker } from 'mapbox-gl';
+import { Feature } from '../interfaces/geocoding.interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MapService {
-  private map!: Map;
-  private markersOfResults: Marker[] = [];
+  public map!: Map;
+  public defaultZoom = 15;
 
-  public constructor(private directionsApiClient: DirectionsApiClient) {}
+  public featureMarkers: Marker[] = [];
 
-  public getMap(): Map {
-    return this.map;
-  }
+  public constructor() {}
 
-  public setMap(map: Map): void {
-    this.map = map;
-  }
-
-  public flyTo(center: LngLatLike): void {
-    this.map.flyTo({ zoom: 15, center });
-  }
-
-  public createMarkersOfResults(features: Feature[]): void {
+  public createFeatureMarkers(features: Feature[]): void {
     // Remove current markers from map
-    this.markersOfResults.forEach((marker) => marker.remove());
+    this.removeFeatureMarkers();
 
     // Create new markers from results
     const markers = features.map((feature) => {
@@ -36,27 +23,25 @@ export class MapService {
       const marker = new Marker().setLngLat([lng, lat]).addTo(this.map);
       return marker;
     });
-
-    this.markersOfResults = markers;
+    this.featureMarkers = markers;
 
     const bounds = new LngLatBounds();
-
-    this.markersOfResults.forEach((marker) => {
+    this.featureMarkers.forEach((marker) => {
       bounds.extend(marker.getLngLat());
     });
-
     this.map.fitBounds(bounds, {
       padding: 200,
     });
   }
 
-  public getRouteBetweenPoints(
-    start: [number, number],
-    end: [number, number]
-  ): Observable<DirectionsResponse> {
-    const [startLng, startLat] = start;
-    const [endLng, endLat] = end;
-    const url = `/${startLng},${startLat};${endLng},${endLat}`;
-    return this.directionsApiClient.get<DirectionsResponse>(url);
+  public removeFeatureMarkers(): void {
+    this.featureMarkers.forEach((marker) => marker.remove());
+  }
+
+  public flyTo(center: [number, number]): void {
+    this.map.flyTo({
+      zoom: this.defaultZoom,
+      center,
+    });
   }
 }

@@ -1,6 +1,7 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
-import { Map, Marker, Popup } from 'mapbox-gl';
-import { MapService, PlacesService } from '../../services';
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Map, Marker } from 'mapbox-gl';
+import { NavigatorService } from '../../services/navigator.service';
+import { MapService } from '../../services/map.service';
 
 @Component({
   selector: 'app-map-view',
@@ -9,29 +10,25 @@ import { MapService, PlacesService } from '../../services';
 })
 export class MapViewComponent implements AfterViewInit {
   @ViewChild('map')
-  public mapReference!: ElementRef<HTMLDivElement>;
+  public mapRef!: ElementRef<HTMLDivElement>;
 
   public constructor(
-    private placesService: PlacesService,
+    private navigatorService: NavigatorService,
     private mapService: MapService
   ) {}
 
   public ngAfterViewInit(): void {
     const map = new Map({
-      container: this.mapReference.nativeElement,
+      container: this.mapRef.nativeElement,
       style: 'mapbox://styles/mapbox/streets-v12',
-      center: this.placesService.userLocation,
-      zoom: 15,
+      center: this.navigatorService.userCoords,
+      zoom: this.mapService.defaultZoom,
     });
 
-    const html = `<h3 class="text-lg font-bold">I'm here</h3>`;
-    const popup = new Popup({ closeButton: false }).setHTML(html);
-
-    new Marker()
-      .setLngLat(this.placesService.userLocation!)
-      .setPopup(popup)
+    new Marker({ color: 'red' })
+      .setLngLat(this.navigatorService.userCoords)
       .addTo(map);
 
-    this.mapService.setMap(map);
+    this.mapService.map = map;
   }
 }
