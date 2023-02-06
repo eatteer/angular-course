@@ -13,4 +13,8 @@ export class CharactersComponent {
   public constructor(private dbzService: DbzService) {
     this.characters = this.dbzService.characters;
   }
+
+  // public get characters() {
+  //   return this.dbzService.characters;
+  // }
 }

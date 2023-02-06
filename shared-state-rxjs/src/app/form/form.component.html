@@ -1,0 +1,30 @@
+<h2>Component state</h2>
+<p>Color: {{ color }}</p>
+<button (click)="toggleColor()">Toggle color</button>
+<p>
+  <small>Update a string property</small>
+</p>
+<hr />
+<p>Food: {{ foodAndColors | json }}</p>
+<button (click)="toggleFoodAndColors()">Toggle food and colors</button>
+<p>
+  <small>Update an array property</small>
+</p>
+<hr />
+<h2>Numbers</h2>
+<div>
+  <p>Local</p>
+  <pre>{{ numbers | json }}</pre>
+</div>
+<div>
+  <p>Service</p>
+  <pre>{{ numbersFromService | json }}</pre>
+</div>
+<button (click)="addNumber()">Add number</button>
+<button (click)="addNumbersFromService()">Add number to service</button>
+<hr />
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <input formControlName="name" type="text" placeholder="Name" />
+  <input formControlName="quirk" type="text" placeholder="Quirk" />
+  <button type="submit">Submit</button>
+</form>
